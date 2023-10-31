@@ -6,15 +6,17 @@ import { MovieDetalis } from '../../components/MovieDetails/MovieDetails';
 export const MoviesItem = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  const { id } = useParams;
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    findMovieById(Number(id)).then(response => setMovie(response.data));
+    findMovieById(id).then(response => setMovie(response));
   }, [id]);
+
   if (!movie) {
-    return null;
+    return <div>Loading...</div>;
   }
+
   return (
     <div>
       <div>

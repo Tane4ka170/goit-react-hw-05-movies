@@ -20,9 +20,9 @@ export const App = () => {
 
       <Route path="/movies" element={<Movies />} />
       <Route path="/movies/:id" element={<MoviesItem />}>
-        <Route path="cast" element={<Cast />} />
-        <Route path="reviews" element={<Reviews />} />
-      </Route>
+  <Route path="cast" element={<Cast />} />
+  <Route path="reviews" element={<Reviews />} />
+</Route>
       {/* {/* </Route> */}
     </Routes>
   );
