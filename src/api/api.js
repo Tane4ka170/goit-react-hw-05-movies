@@ -1,38 +1,40 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'acf0af182bd80fd1b8fe4238ec11e366';
-
-async function fetchWithError(url = '', config = {}) {
-  try {
-    const response = await axios.get(url, config);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 export async function getTrendingMovies() {
-  const url = `${BASE_URL}/trending/all/day?api_key=${API_KEY}`;
-  return fetchWithError(url);
+  const axiosUrl = `trending/movie/day?api_key=${API_KEY}`;
+  const response = await axios.get(axiosUrl);
+  return response.data.results;
 }
 
-export async function searchMovies(query) {
-  const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
-  return fetchWithError(url);
+export async function findMovieById(movie_id) {
+  const axiosUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
+  const response = await axios.get(axiosUrl);
+  return response.data;
 }
 
-export async function getMovieDetails(movieId) {
-  const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`;
-  return fetchWithError(url);
+export async function findMovieByName(movieName) {
+  const axiosUrl = `search/movie?api_key=${API_KEY}&language=en-US&query=${movieName}&page=1&include_adult=false`;
+  const response = await axios.get(axiosUrl);
+  return response.data.results;
 }
 
-export async function getMovieCredits(movieId) {
-  const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`;
-  return fetchWithError(url);
+export async function getCastMovieById(movie_id) {
+  const axiosUrl = `movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`;
+  const response = await axios.get(axiosUrl);
+  if (response.data.cast.length === 0) {
+    return false;
+  }
+  return response.data.cast;
 }
 
-export async function getMovieReviews(movieId) {
-  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`;
-  return fetchWithError(url);
+export async function getMovieReviews(movie_id) {
+  const axiosUrl = `movie/${movie_id}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
+  const response = await axios.get(axiosUrl);
+  if (response.data.total_results === 0) {
+    return false;
+  }
+  return response.data.results;
 }

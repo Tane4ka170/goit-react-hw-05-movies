@@ -1,0 +1,33 @@
+.trendingLi {
+  list-style: none;
+  margin: 8px; /* Внутрішні відступи для елементів */
+  flex-basis: calc(50% - 16px); /* 50% ширина з відступами */
+  display: flex;
+  align-items: center;
+}
+
+.trendingLi a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.trendingLi a:hover {
+  transform: scale(1.05);
+}
+
+.trendingImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trendingTitle {
+  font-size: 16px;
+  margin-top: 8px;
+  text-align: center;
+}

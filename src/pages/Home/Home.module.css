@@ -1,0 +1,27 @@
+.trendingDiv {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.treandingHeading {
+  font-size: 36px;
+  color: #e7379e;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.trendingUl {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.trendingUl li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
