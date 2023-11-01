@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { findMovieById } from '../../api/api';
 import { MovieDetalis } from '../../components/MovieDetails/MovieDetails';
 import s from './MoviesItem.module.css';
@@ -26,22 +32,20 @@ const MoviesItem = () => {
         </Link>
         <MovieDetalis movie={movie} />
 
-        <ul className={s.movieUl}>
-          <li className={s.movieLi}>
-            <Link className={s.movieLink} to={`cast`} state={{ backLinkHref }}>
-              Cast
-            </Link>
-          </li>
-          <li className={s.movieLi}>
-            <Link
-              className={s.movieLink}
-              to={`reviews`}
-              state={{ backLinkHref }}
-            >
-              Reviews
-            </Link>
-          </li>
-        </ul>
+        <NavLink className={s.movieLink} to={`cast`} state={{ backLinkHref }}>
+          Cast
+        </NavLink>
+
+        <NavLink
+          className={s.movieLink}
+          to={`reviews`}
+          state={{ backLinkHref }}
+        >
+          Reviews
+        </NavLink>
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );

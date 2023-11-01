@@ -1,40 +1,51 @@
-import { fetchCastMovieById } from 'api/api';
-import { Suspense, useEffect, useState } from 'react';
+import { fetchCastMovieById } from '../../api/api';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Loader from '../Loader/Loader';
 
-export default function Cast() {
+const Cast = () => {
+  const { id } = useParams();
   const [cast, setCast] = useState([]);
-  const { idMovies } = useParams();
 
   useEffect(() => {
-    fetchCastMovieById(idMovies.id).then(fetchCast => setCast(fetchCast.cast));
-  }, [idMovies.id]);
+    const movieCast = async () => {
+      try {
+        const response = await fetchCastMovieById(id);
+        setCast(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    movieCast();
+  }, [id]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <div>
-        <ul>
-          {cast.map(person => {
-            return (
-              <li key={person.id}>
+    <>
+      {cast.length !== 0 && (
+        <div>
+          <h2>Movie Cast</h2>
+          <ul>
+            {cast.map(actor => (
+              <li key={actor.id}>
                 <img
+                  width="200px"
+                  height="300px"
                   src={
-                    person.profile_path
-                      ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
-                      : 'no Photo'
+                    actor.profile_path
+                      ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
+                      : 'no photo'
                   }
-                  alt={`${person.name}`}
+                  alt={actor.original_name}
                 />
-                <div>
-                  <p>{person.name}</p>
-                  <p>Character: {person.character}</p>
-                </div>
+                <p>{actor.name}</p>
               </li>
-            );
-          })}
-        </ul>
-      </div>
-    </Suspense>
+            ))}
+          </ul>
+        </div>
+      )}
+      {cast.length === 0 && <div>We don't have any cast for this movie.</div>}
+    </>
   );
-}
+};
+
+export default Cast;
