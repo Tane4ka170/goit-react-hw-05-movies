@@ -1,0 +1,26 @@
+.wrapper {
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #0f021b;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #e7379e;
+}

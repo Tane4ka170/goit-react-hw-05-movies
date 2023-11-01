@@ -1,0 +1,48 @@
+.movieWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.movieOverlay {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.return {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+
+.return:hover {
+  color: #e7379e; /* Змініть колір при наведенні за потребою */
+}
+
+.movieUl {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  margin-top: 16px;
+}
+
+.movieLi {
+  margin-right: 20px;
+}
+
+.movieLink {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.movieLink:hover {
+  color: #e7379e; /* Змініть колір при наведенні за потребою */
+}

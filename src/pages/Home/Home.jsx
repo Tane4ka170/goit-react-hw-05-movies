@@ -3,7 +3,7 @@ import { getTrendingMovies } from '../../api/api';
 import { HomeList } from '../../components/HomeList/HomeList';
 import s from './Home.module.css';
 
-export function Home() {
+export default function Home() {
   const [trendings, setTrendings] = useState([]);
 
   useEffect(() => {
