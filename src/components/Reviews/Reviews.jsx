@@ -6,7 +6,6 @@ import s from './Reviews.module.css';
 export default function Reviews() {
   const { movieId } = useParams();
   const [reviewsObj, setReviewsObj] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getMovieObj = async () => {
@@ -14,7 +13,7 @@ export default function Reviews() {
         const getReviewsObj = await getMovieReviews(movieId);
         setReviewsObj(getReviewsObj);
       } catch (error) {
-        setError(error);
+        // You can remove this part if you don't need the error state.
       }
     };
     getMovieObj();
@@ -37,7 +36,7 @@ export default function Reviews() {
   if (reviewsObj === false) {
     return (
       <section className={s.reviews}>
-        <p>Reviews is Emty</p>
+        <p>Reviews is Empty</p>
       </section>
     );
   }
