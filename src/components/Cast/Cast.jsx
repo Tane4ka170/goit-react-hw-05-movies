@@ -1,6 +1,9 @@
 import { fetchCastMovieById } from '../../api/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import nophoto from '../../Images/nophoto.jpg';
+import s from './Cast.module.css';
+import PropTypes from 'prop-types';
 
 const Cast = () => {
   const { id } = useParams();
@@ -22,30 +25,47 @@ const Cast = () => {
   return (
     <>
       {cast.length !== 0 && (
-        <div>
-          <h2>Movie Cast</h2>
-          <ul>
+        <div className={s.castContainer}>
+          <h2 className={s.castTitle}>Movie Cast</h2>
+          <ul className={s.castList}>
             {cast.map(actor => (
-              <li key={actor.id}>
+              <li key={actor.id} className={s.castItem}>
                 <img
                   width="200px"
                   height="300px"
+                  className={s.castImage}
                   src={
                     actor.profile_path
                       ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
-                      : 'no photo'
+                      : `${nophoto}`
                   }
                   alt={actor.original_name}
                 />
-                <p>{actor.name}</p>
+                <p className={s.castName}>{actor.name}</p>
               </li>
             ))}
           </ul>
         </div>
       )}
-      {cast.length === 0 && <div>We don't have any cast for this movie.</div>}
+      {cast.length === 0 && (
+        <div className={s.noCastMessage}>
+          We don't have any cast for this movie.
+        </div>
+      )}
     </>
   );
+};
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      profile_path: PropTypes.string,
+      original_name: PropTypes.string,
+
+      name: PropTypes.string,
+    })
+  ),
 };
 
 export default Cast;

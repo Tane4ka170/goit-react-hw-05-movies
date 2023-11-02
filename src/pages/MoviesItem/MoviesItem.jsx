@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { findMovieById } from '../../api/api';
 import { MovieDetalis } from '../../components/MovieDetails/MovieDetails';
+import Loader from '../../components/Loader/Loader';
 import s from './MoviesItem.module.css';
 
 const MoviesItem = () => {
@@ -21,7 +22,7 @@ const MoviesItem = () => {
   }, [id]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -31,19 +32,20 @@ const MoviesItem = () => {
           &#8592; Return
         </Link>
         <MovieDetalis movie={movie} />
+        <div className={s.movieLinkContainer}>
+          <NavLink className={s.movieLink} to={`cast`} state={{ backLinkHref }}>
+            Cast
+          </NavLink>
 
-        <NavLink className={s.movieLink} to={`cast`} state={{ backLinkHref }}>
-          Cast
-        </NavLink>
-
-        <NavLink
-          className={s.movieLink}
-          to={`reviews`}
-          state={{ backLinkHref }}
-        >
-          Reviews
-        </NavLink>
-        <Suspense>
+          <NavLink
+            className={s.movieLink}
+            to={`reviews`}
+            state={{ backLinkHref }}
+          >
+            Reviews
+          </NavLink>
+        </div>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </div>

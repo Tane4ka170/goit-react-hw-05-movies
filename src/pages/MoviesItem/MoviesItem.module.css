@@ -22,7 +22,7 @@
 }
 
 .return:hover {
-  color: #e7379e; /* Змініть колір при наведенні за потребою */
+  color: #e7379e;
 }
 
 .movieUl {
@@ -36,13 +36,30 @@
   margin-right: 20px;
 }
 
+.movieLinkContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 16px;
+}
+
 .movieLink {
   text-decoration: none;
   color: #333;
   font-size: 16px;
   transition: color 0.2s;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.movieLink:last-child {
+  margin-right: 0;
 }
 
 .movieLink:hover {
-  color: #e7379e; /* Змініть колір при наведенні за потребою */
+  color: #e7379e;
+  background-color: #e7379e;
+  color: #fff;
 }

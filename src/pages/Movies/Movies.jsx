@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { findMovieByName } from '../../api/api';
 import MoviesList from '../../components/MoviesList/MoviesList';
+import s from './Movies.module.css';
 
 export default function Movies() {
   const [inputChange, setInputChange] = useState('');
@@ -30,18 +31,21 @@ export default function Movies() {
   }
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Provide a search term{' '}
+    <section className={s.moviesSection}>
+      <form className={s.moviesForm} onSubmit={handleSubmit}>
+        <label className={s.moviesLabel}>
+          Input a search query &#8595;{' '}
           <input
+            className={s.moviesInput}
             value={inputChange}
             onChange={e => {
               setInputChange(e.target.value);
             }}
           />
         </label>
-        <button type="submit">Search</button>
+        <button className={s.moviesButton} type="submit">
+          Search
+        </button>
       </form>
       <MoviesList searchMovies={searchMovies} />
     </section>

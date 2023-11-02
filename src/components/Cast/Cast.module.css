@@ -1,0 +1,43 @@
+.castContainer {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.castTitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #e7379e;
+}
+
+.castList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.castItem {
+  margin: 16px;
+  text-align: center;
+}
+
+.castImage {
+  max-width: 200px;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.castName {
+  font-size: 18px;
+  margin-top: 8px;
+  color: #333;
+}
+
+.noCastMessage {
+  font-size: 18px;
+  margin-top: 16px;
+  color: #b08ff4;
+}

@@ -1,4 +1,12 @@
-.trendingLi {
+.movieList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movieItem {
   list-style: none;
   margin: 8px;
   flex-basis: calc(50% - 16px);
@@ -6,7 +14,7 @@
   align-items: center;
 }
 
-.trendingLi a {
+.movieLink {
   text-decoration: none;
   color: #333;
   display: flex;
@@ -15,19 +23,25 @@
   transition: transform 0.2s;
 }
 
-.trendingLi a:hover {
+.movieLink:hover {
+  color: #e7379e;
   transform: scale(1.05);
 }
 
-.trendingImg {
+.movieImage {
   max-width: 100%;
-  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.trendingTitle {
+.movieTitle {
   font-size: 16px;
   margin-top: 8px;
-  text-align: center;
+  color: #333;
+}
+
+.movieTitle:hover {
+  color: #e7379e;
 }
