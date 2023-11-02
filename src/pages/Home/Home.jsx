@@ -27,7 +27,6 @@ HomeList.propTypes = {
   trendings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      // Інші необхідні властивості
     })
   ).isRequired,
 };

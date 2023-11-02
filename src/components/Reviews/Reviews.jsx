@@ -8,16 +8,20 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    const movieReviews = async () => {
+    const fetchMovieReviews = async () => {
       try {
         const response = await getMovieReviews(id);
-        setReviews(response);
+        if (Array.isArray(response)) {
+          setReviews(response);
+        } else {
+          setReviews([]);
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
-    movieReviews();
+    fetchMovieReviews();
   }, [id]);
 
   return (
@@ -36,7 +40,7 @@ const Reviews = () => {
         </div>
       )}
       {reviews.length === 0 && (
-        <div className={s.noRewievs}>
+        <div className={s.noReviews}>
           We don't have any reviews for this movie.
         </div>
       )}

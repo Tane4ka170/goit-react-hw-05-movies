@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import {
   Link,
   NavLink,
@@ -13,7 +13,7 @@ import s from './MoviesItem.module.css';
 
 const MoviesItem = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location?.state?.from ?? '/');
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -28,7 +28,7 @@ const MoviesItem = () => {
   return (
     <div className={s.movieWrapper}>
       <div className={s.movieOverlay}>
-        <Link className={s.return} to={backLinkHref}>
+        <Link className={s.return} to={backLinkHref.current}>
           &#8592; Return
         </Link>
         <MovieDetalis movie={movie} />

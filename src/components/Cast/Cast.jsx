@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import nophoto from '../../Images/nophoto.jpg';
 import s from './Cast.module.css';
-import PropTypes from 'prop-types';
 
 const Cast = () => {
   const { id } = useParams();
@@ -54,18 +53,6 @@ const Cast = () => {
       )}
     </>
   );
-};
-
-Cast.propTypes = {
-  cast: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      profile_path: PropTypes.string,
-      original_name: PropTypes.string,
-
-      name: PropTypes.string,
-    })
-  ),
 };
 
 export default Cast;
