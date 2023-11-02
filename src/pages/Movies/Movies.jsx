@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { findMovieByName } from '../../api/api';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import s from './Movies.module.css';
+import PropTypes from 'prop-types';
 
 export default function Movies() {
   const [inputChange, setInputChange] = useState('');
@@ -51,3 +52,13 @@ export default function Movies() {
     </section>
   );
 }
+
+MoviesList.propTypes = {
+  searchMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

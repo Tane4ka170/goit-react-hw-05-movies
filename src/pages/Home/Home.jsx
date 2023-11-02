@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getTrendingMovies } from '../../api/api';
 import { HomeList } from '../../components/HomeList/HomeList';
 import s from './Home.module.css';
+import PropTypes from 'prop-types';
 
 export default function Home() {
   const [trendings, setTrendings] = useState([]);
@@ -21,3 +22,12 @@ export default function Home() {
     </div>
   );
 }
+
+HomeList.propTypes = {
+  trendings: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      // Інші необхідні властивості
+    })
+  ).isRequired,
+};
