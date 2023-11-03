@@ -48,7 +48,7 @@ const Cast = () => {
       )}
       {cast.length === 0 && (
         <div className={s.noCastMessage}>
-          We don't have any cast for this movie.
+          We haven't finalized the cast for this movie yet.
         </div>
       )}
     </>

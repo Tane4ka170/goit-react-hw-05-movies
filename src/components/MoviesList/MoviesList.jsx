@@ -8,7 +8,7 @@ export default function MoviesList({ searchMovies }) {
   const location = useLocation();
 
   if ((!searchMovies || searchMovies.length === 0) && location.search) {
-    return <p>No movies found.</p>;
+    return <p>There are no movies available.</p>;
   }
 
   return (
