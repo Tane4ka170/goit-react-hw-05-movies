@@ -12,7 +12,11 @@ const Cast = () => {
     const movieCast = async () => {
       try {
         const response = await fetchCastMovieById(id);
-        setCast(response);
+        if (Array.isArray(response)) {
+          setCast(response);
+        } else {
+          setCast([]);
+        }
       } catch (error) {
         console.error(error);
       }
