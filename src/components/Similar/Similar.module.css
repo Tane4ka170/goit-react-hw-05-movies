@@ -17,26 +17,30 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.castItem {
+  margin: 0 10px 20px 0;
+}
+
 .movieLink {
   text-decoration: none;
-}
-.castItem {
-  margin: 16px;
-  text-align: center;
+  color: #333;
 }
 
 .castImage {
-  max-width: 200px;
-  height: 300px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.castImage:hover {
+  transform: scale(1.05);
 }
 
 .castName {
-  font-size: 18px;
-  margin-top: 8px;
-  color: #333;
-  text-decoration: none;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
 }
 
 .noCastMessage {

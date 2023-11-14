@@ -7,6 +7,7 @@ const MoviesItem = lazy(() => import('pages/MoviesItem/MoviesItem'));
 const Layout = lazy(() => import('./Layout/Layout'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Similar = lazy(() => import('./Similar/Similar'));
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
         <Route path="movies/:id" element={<MoviesItem />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
+          <Route path="similar" element={<Similar />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Route>

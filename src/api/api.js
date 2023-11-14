@@ -38,3 +38,12 @@ export async function getMovieReviews(movie_id) {
   }
   return response.data.results;
 }
+
+export async function getSimilarMovies(movie_id) {
+  const axiosUrl = `movie/${movie_id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
+  const response = await axios.get(axiosUrl);
+  if (response.data.total_results === 0) {
+    return false;
+  }
+  return response.data.results;
+}

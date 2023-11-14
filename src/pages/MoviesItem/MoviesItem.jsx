@@ -44,6 +44,13 @@ const MoviesItem = () => {
           >
             Reviews
           </NavLink>
+          <NavLink
+            className={s.movieLink}
+            to={`similar`}
+            state={{ backLinkHref }}
+          >
+            Similar
+          </NavLink>
         </div>
         <Suspense fallback={<Loader />}>
           <Outlet />
